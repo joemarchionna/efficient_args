@@ -3,8 +3,9 @@ import argparse
 
 def addBaseArgs(
     parser: argparse.ArgumentParser,
+    addLogModifiers: bool = False,
     addDryRun: bool = False,
-    addEnvironment: bool = False,
+    addEnvironment: bool = True,
     environmentOptions=["prod", "test", "dev"],
     defaultEnvironmentOption="test",
 ):
@@ -18,23 +19,24 @@ def addBaseArgs(
         environmentOptions (list, optional): valid environment options. Defaults to ["prod", "test", "dev"]
         defaultEnvironmentOption (str, optional): default environment. Defaults to "test"
     """
-    lp = parser.add_mutually_exclusive_group()
+    if addLogModifiers:
+        lp = parser.add_mutually_exclusive_group()
 
-    lp.add_argument(
-        "-q",
-        "--quiet",
-        help="Quiet, Produce Almost No Logging",
-        action="store_true",
-        default=False,
-    )
+        lp.add_argument(
+            "-q",
+            "--quiet",
+            help="Quiet, Produce Almost No Logging",
+            action="store_true",
+            default=False,
+        )
 
-    lp.add_argument(
-        "-v",
-        "--verbose",
-        help="Verbose, Produce Excessive Logging",
-        action="store_true",
-        default=False,
-    )
+        lp.add_argument(
+            "-v",
+            "--verbose",
+            help="Verbose, Produce Excessive Logging",
+            action="store_true",
+            default=False,
+        )
 
     if addDryRun:
         parser.add_argument(

@@ -35,10 +35,10 @@ if __name__ == "__main__":
 Results in the output:
 
 ````bash
-user@pc MINGW64 /efficient_args
-23:50:45 (env) $ python examples/ex1.py -f tests/itemList.txt
-{'quiet': False, 'verbose': False, 'environment': 'test', 'list': [], 'file': 'tests/itemList.txt'}
-['x33', 'x88', 'x44']
+    user@pc MINGW64 /efficient_args
+    23:50:45 (env) $ python examples/ex1.py -f tests/itemList.txt
+    {'quiet': False, 'verbose': False, 'environment': 'test', 'list': [], 'file': 'tests/itemList.txt'}
+    ['x33', 'x88', 'x44']
 ````
 
 ## Cloning For Development
