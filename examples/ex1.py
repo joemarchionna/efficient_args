@@ -1,12 +1,11 @@
 import sys
 
 sys.path.append(".")
-from efficient_args import addBaseArgs, addListArgs, parseArgs, parseCmdLineList
+from efficient_args import FORMATTER, addBaseArgs, addListArgs, parseArgs, parseCmdLineList
 import argparse
 
 if __name__ == "__main__":
-    formatter = lambda prog: argparse.HelpFormatter(prog, indent_increment=4, max_help_position=80)
-    parser = argparse.ArgumentParser(description="Example Command Parser", formatter_class=formatter)
+    parser = argparse.ArgumentParser(description="Example Command Parser", formatter_class=FORMATTER)
 
     addBaseArgs(parser, addEnvironment=True)
     addListArgs(parser, required=True, itemName="Words")

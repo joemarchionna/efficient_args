@@ -13,20 +13,15 @@ Installation:
 This library was created to be used with scripts / apps that operate in multiple environments
 
 ````python
-import sys
-
-sys.path.append(".")
-from efficient_args import addBaseArgs, addListArgs, parseArgs, parseCmdLineList
+from efficient_args import FORMATTER, addBaseArgs, addListArgs, parseArgs, parseCmdLineList
 import argparse
 
 if __name__ == "__main__":
-    formatter = lambda prog: argparse.HelpFormatter(prog, indent_increment=4, max_help_position=80)
-    parser = argparse.ArgumentParser(description="Example Command Parser", formatter_class=formatter)
+    parser = argparse.ArgumentParser(description="Example Command Parser", formatter_class=FORMATTER)
 
     addBaseArgs(parser, addEnvironment=True)
     addListArgs(parser, required=True, itemName="Words")
     argDict = parseArgs(parser)
-
 
     words = parseCmdLineList(argDict)
     print(words)
@@ -37,7 +32,7 @@ Results in the output:
 ````bash
     user@pc MINGW64 /efficient_args
     23:50:45 (env) $ python examples/ex1.py -f tests/itemList.txt
-    {'quiet': False, 'verbose': False, 'environment': 'test', 'list': [], 'file': 'tests/itemList.txt'}
+    {'environment': 'test', 'list': [], 'file': 'tests/itemList.txt'}
     ['x33', 'x88', 'x44']
 ````
 
