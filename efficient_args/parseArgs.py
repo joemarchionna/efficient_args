@@ -32,7 +32,7 @@ def parseCmdLineList(cmds: dict) -> list[str]:
         list[str]: the list items
     """
     if cmds.get("list", []):
-        _logger.debug("Returning Items From cmds['list']")
+        _logger.debug("Returning {} Items From cmds['list']".format(len(cmds["list"])))
         return cmds["list"]
     if cmds.get("file", None):
         _logger.debug("Returning Items From cmds['file']")
@@ -43,6 +43,7 @@ def parseCmdLineList(cmds: dict) -> list[str]:
                 v = x.strip()
                 if v:
                     values.append(v)
+            _logger.debug("Returning {} Items From cmds['file']".format(len(values)))
             return values
     _logger.debug("No Items Specified In cmds 'list' or 'file', Returning Empty List")
     return []
